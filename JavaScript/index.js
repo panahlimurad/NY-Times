@@ -15,20 +15,19 @@ $(document).ready(function () {
     return formDate;
   };
 
-  const render = () => {
+  const render = (arr) => {
     $("#newsList").html(
       arr.map((news) => {
         return `<div class="col-md-12">
         <div class="card mb-5">
           <img style="height: 400px; object-fit: cover;"
-            src="https://around.uoregon.edu/sites/around3.uoregon.edu/files/field/image/nyt.jpg" class="card-img-top"
+            src="https://www.nytimes.com/${news.multimedia[0].url}" class="card-img-top"
             alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
+            <h5 class="card-title">${news.abstract}</h5>
+            <p class="card-text">${news.lead_paragraph}</p>
           </div>
+          <a href="${news.web_url}" class="btn btn-dark">Read More</a>
         </div>
       </div> `;
       })
